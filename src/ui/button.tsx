@@ -31,7 +31,7 @@ const SelectButtonContainer = styled(Button)({
   },
 })
 
-type CustomizedButtonProps = React.PropsWithChildren &
+export type CustomizedButtonProps = React.PropsWithChildren &
   React.ComponentProps<typeof SelectButtonContainer> & {
     className?: string
   }

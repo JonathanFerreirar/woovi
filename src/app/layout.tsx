@@ -20,7 +20,7 @@ const RootLayout = ({
   children: React.ReactNode
 }>) => {
   return (
-    <html lang="pt">
+    <html lang="pt" suppressHydrationWarning>
       <body className={nunito.className}>
         <Link href="/">
           <h1 className="sr-only">Woovi</h1>

@@ -6,6 +6,7 @@ import { formatValue } from '@/utils/formatMoney'
 import { PaymentOptionProps } from '../selectContainer'
 
 import HowWorkAccordion from './fragments/howWorkAccordion'
+import StepForm from './fragments/stepForm'
 import StepPix from './fragments/stepPix'
 
 type PaymentStepProps = {
@@ -24,7 +25,7 @@ const PaymentStep = ({ option, total, step = '1' }: PaymentStepProps) => {
     },
     {
       id: 2,
-      label: `${option.quantity}º no Cartão`,
+      label: `2º no Cartão`,
     },
   ]
 
@@ -34,7 +35,7 @@ const PaymentStep = ({ option, total, step = '1' }: PaymentStepProps) => {
         return <StepPix option={option} total={total} />
 
       case '2':
-        return <h1>ola mundo</h1>
+        return <StepForm option={option} />
 
       default:
         break

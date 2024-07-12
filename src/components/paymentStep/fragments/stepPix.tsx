@@ -10,12 +10,12 @@ import { PaperIcon } from '@/components/icon'
 import { PaymentOptionProps } from '@/components/selectContainer'
 import CustomizedButton from '@/ui/button'
 
-type StepPixProps = {
+export type StepProps = {
   total: string
   option: PaymentOptionProps
 }
 
-const StepPix = ({ option, total }: StepPixProps) => {
+const StepPix = ({ option, total }: StepProps) => {
   const router = useRouter()
   const jsonOption = encodeURI(JSON.stringify(option))
   const [isLoading, setIsLoading] = React.useState(false)
