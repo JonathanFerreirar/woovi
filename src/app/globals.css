@@ -25,3 +25,11 @@ body {
     text-wrap: balance;
   }
 }
+
+#selected + button {
+  border-top: 0;
+}
+
+.cliped-bg {
+  clip-path: polygon(100% 0, 95% 50%, 100% 100%, 0 100%, 0 50%, 0 0);
+}

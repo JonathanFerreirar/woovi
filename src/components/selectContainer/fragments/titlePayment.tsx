@@ -4,16 +4,16 @@ import { cn } from '@/utils/cn'
 
 type H3PropsWithoutChildren = Omit<React.ComponentProps<'h3'>, 'children'>
 
-type TitleSelectContainer = React.PropsWithChildren &
+type TitlePaymentProps = React.PropsWithChildren &
   React.ComponentProps<'div'> & {
     titleCustomProps?: H3PropsWithoutChildren
   }
 
-const TitleSelectContainer = ({
+const TitlePayment = ({
   children,
   titleCustomProps,
   ...props
-}: TitleSelectContainer) => {
+}: TitlePaymentProps) => {
   return (
     <div
       {...props}
@@ -29,4 +29,4 @@ const TitleSelectContainer = ({
   )
 }
 
-export default TitleSelectContainer
+export default TitlePayment

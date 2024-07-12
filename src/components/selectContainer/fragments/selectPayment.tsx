@@ -1,4 +1,5 @@
 import React from 'react'
+import Link, { LinkProps as LinkType } from 'next/link'
 import { Check, Circle } from 'lucide-react'
 
 import { cn } from '@/utils/cn'
@@ -6,24 +7,39 @@ import { formatValue } from '@/utils/formatMoney'
 
 import { PaymentOptionProps } from '../selectContainer'
 
-type BaseSelectContainerProps = React.ComponentProps<'div'> & {
-  option: PaymentOptionProps
-  isSelected: boolean
-  total: number
-}
+type LinkWithoutHref = Omit<LinkType, 'href'>
 
-const BaseSelectContainer = ({
+type LinkProps = LinkWithoutHref & React.HTMLProps<HTMLAnchorElement>
+
+type SelectPaymentProps = React.PropsWithChildren &
+  LinkProps & {
+    total: number
+    isSelected: boolean
+    option: PaymentOptionProps
+  }
+
+const selectPayment = ({
   option,
   total,
   isSelected,
+  children,
   ...props
-}: BaseSelectContainerProps) => {
+}: SelectPaymentProps) => {
   return (
-    <div
+    <Link
       {...props}
+      href={{
+        pathname: '/payment',
+        query: {
+          step: 1,
+          option: JSON.stringify(option),
+        },
+      }}
+      role="radio"
+      aria-checked={isSelected}
       className={cn(
-        'hover:border-primary hover:border-b-2 hover:bg-primary/10',
-        'relative flex flex-col items-start border-b-0 border-t-2 border-x-2 border-border p-5 cursor-pointer',
+        'hover:bg-primary/10 transition-shadow',
+        'relative flex flex-col items-start border-b-0 border-t-2 border-x-2 border-border p-5 cursor-pointer w-full',
         props.className,
       )}
     >
@@ -51,19 +67,19 @@ const BaseSelectContainer = ({
           {formatValue(total)}
         </span>
       </div>
-
+      {children}
       {isSelected ? (
         <div className="absolute bottom-1/2 right-2 flex size-[19px] translate-y-1/2 items-center justify-center rounded-full bg-primary">
           <Check size={12} strokeWidth={3} color="#fff" />
         </div>
       ) : (
         <Circle
-          size={26}
+          size={21}
           className="absolute bottom-1/2 right-2 translate-y-1/2 text-border"
         />
       )}
-    </div>
+    </Link>
   )
 }
 
-export default BaseSelectContainer
+export default selectPayment

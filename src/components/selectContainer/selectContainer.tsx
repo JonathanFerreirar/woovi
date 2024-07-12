@@ -6,8 +6,8 @@ import { cn } from '@/utils/cn'
 
 import { PaymentOption } from '../../../data'
 
-import BaseSelectContainer from './fragments/container'
-import TitleSelectContainer from './fragments/title'
+import SelectPayment from './fragments/selectPayment'
+import TitleSelect from './fragments/titlePayment'
 
 export type PaymentOptionProps = {
   id: number
@@ -15,22 +15,22 @@ export type PaymentOptionProps = {
   quantity: number
 }
 
-type SelectContainerProps = {
+type PaymentInstallmentProps = {
   title: string
   total: number
   paymentData: PaymentOptionProps[]
 }
 
-const SelectContainer = ({
+const PaymentInstallment = ({
   title,
   total,
   paymentData,
-}: SelectContainerProps) => {
+}: PaymentInstallmentProps) => {
   const [option, setOption] = React.useState({} as PaymentOptionProps)
 
   return (
     <div className="relative size-auto">
-      <TitleSelectContainer>{title}</TitleSelectContainer>
+      <TitleSelect>{title}</TitleSelect>
 
       {paymentData.map((item, index) => {
         const isFirst = index === 0
@@ -38,12 +38,13 @@ const SelectContainer = ({
         const isLast = PaymentOption.length === index + 1
 
         return (
-          <BaseSelectContainer
+          <SelectPayment
             key={index}
             option={item}
             total={total}
             isSelected={isSelected}
             onClick={() => setOption(item)}
+            id={isSelected ? 'selected' : undefined}
             className={cn(
               isFirst && 'rounded-t-lg',
               isLast && 'border-b-2 rounded-b-lg',
@@ -56,4 +57,4 @@ const SelectContainer = ({
   )
 }
 
-export default SelectContainer
+export default PaymentInstallment
