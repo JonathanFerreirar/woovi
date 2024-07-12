@@ -33,6 +33,7 @@ const selectPayment = ({
         query: {
           step: 1,
           option: JSON.stringify(option),
+          total,
         },
       }}
       role="radio"
@@ -69,13 +70,13 @@ const selectPayment = ({
       </div>
       {children}
       {isSelected ? (
-        <div className="absolute bottom-1/2 right-2 flex size-[19px] translate-y-1/2 items-center justify-center rounded-full bg-primary">
+        <div className="absolute bottom-[70%] right-2 flex size-[19px] translate-y-1/2 items-center justify-center rounded-full bg-primary">
           <Check size={12} strokeWidth={3} color="#fff" />
         </div>
       ) : (
         <Circle
           size={21}
-          className="absolute bottom-1/2 right-2 translate-y-1/2 text-border"
+          className="absolute bottom-[70%] right-2 translate-y-1/2 text-border"
         />
       )}
     </Link>

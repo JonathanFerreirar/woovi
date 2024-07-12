@@ -18,6 +18,7 @@ export const PaymentOption = [
     id: 4,
     quantity: 5,
     value: 6300,
+    isBest: true,
   },
   {
     id: 5,

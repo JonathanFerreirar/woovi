@@ -1,39 +1,54 @@
 'use client'
 
+import React from 'react'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
 
+import { cn } from '@/utils/cn'
+
 const SelectButtonContainer = styled(Button)({
   boxShadow: 'none',
   textTransform: 'none',
-  fontSize: 16,
+  borderRadius: 8,
   padding: '6px 12px',
-  color: '#4D4D4D',
-  border: '1px solid',
-  lineHeight: 1.5,
-  backgroundColor: 'transparent',
-  borderColor: '#03D69D',
+  backgroundColor: '#133A6F',
+  color: '#fff',
+  border: 'none',
+
   '&:hover': {
-    backgroundColor: '#0069d9',
-    borderColor: '#0062cc',
     boxShadow: 'none',
+    borderColor: '#none',
+    backgroundColor: '#0e3264',
   },
   '&:active': {
     boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
+    borderColor: '#none',
+    backgroundColor: '#133A6F',
   },
   '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+    boxShadow: 'none',
   },
 })
 
-const CustomizedButton = () => {
+type CustomizedButtonProps = React.PropsWithChildren &
+  React.ComponentProps<typeof SelectButtonContainer> & {
+    className?: string
+  }
+
+const CustomizedButton = ({
+  children,
+  className,
+  ...props
+}: CustomizedButtonProps) => {
   return (
     <Stack spacing={2} direction="row">
-      <SelectButtonContainer variant="contained" disableRipple>
-        Bootstrap
+      <SelectButtonContainer
+        {...props}
+        variant="contained"
+        className={cn(className)}
+      >
+        {children}
       </SelectButtonContainer>
     </Stack>
   )
