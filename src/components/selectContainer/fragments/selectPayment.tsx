@@ -18,7 +18,7 @@ type SelectPaymentProps = React.PropsWithChildren &
     option: PaymentOptionProps
   }
 
-const selectPayment = ({
+export  const SelectPayment = ({
   option,
   total,
   isSelected,
@@ -83,4 +83,4 @@ const selectPayment = ({
   )
 }
 
-export default selectPayment
+

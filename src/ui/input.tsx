@@ -15,21 +15,6 @@ const CustomInput = styled(TextField)<TextFieldProps>(() => ({
     color: '#4D4D4D',
     fontWeight: '500',
   },
-  '&:hover .MuiInputLabel-root': {
-    color: '#03D69D',
-  },
-  '& .MuiInput-underline:before': {
-    borderColor: '#03D69D',
-  },
-  '& .MuiInput-underline:hover:before': {
-    borderColor: '#03D69D',
-  },
-  '& .MuiInput-underline:after': {
-    borderColor: '#03D69D',
-  },
-  '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: '#03D69D',
-  },
 }))
 
 type CustomizedInputProps = TextFieldProps & {
@@ -37,7 +22,15 @@ type CustomizedInputProps = TextFieldProps & {
 }
 
 const CustomizedInput = ({ className, ...props }: CustomizedInputProps) => {
-  return <CustomInput {...props} className={cn(className)} />
+  return (
+    <CustomInput
+      InputLabelProps={{
+        shrink: true,
+      }}
+      {...props}
+      className={cn(className)}
+    />
+  )
 }
 
 export default CustomizedInput

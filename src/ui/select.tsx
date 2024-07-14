@@ -37,12 +37,10 @@ type SelectTextFieldsProps = TextFieldProps & {
 const SelectTextFields = ({ options, ...props }: SelectTextFieldsProps) => {
   return (
     <Box
-      component="form"
+      component="div"
       sx={{
         '& .MuiTextField-root': { width: '100%' },
       }}
-      noValidate
-      autoComplete="off"
     >
       <div>
         <CustomizedInput {...props} select>

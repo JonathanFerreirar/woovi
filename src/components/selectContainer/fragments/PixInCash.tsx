@@ -2,16 +2,17 @@
 
 import React from 'react'
 
-import SelectPayment from '@/components/selectContainer/fragments/selectPayment'
-import TitleSelect from '@/components/selectContainer/fragments/titlePayment'
 import { cn } from '@/utils/cn'
 
-const PixInCashOption = () => {
+import {SelectPayment} from './selectPayment'
+import {TitlePayment} from './titlePayment'
+
+export  const PixInCash = () => {
   const [isSelected, setIsSelected] = React.useState(false)
 
   return (
     <div className="relative size-auto">
-      <TitleSelect>PIX </TitleSelect>
+      <TitlePayment>PIX</TitlePayment>
       <SelectPayment
         option={{
           id: 0,
@@ -41,4 +42,4 @@ const PixInCashOption = () => {
   )
 }
 
-export default PixInCashOption
+

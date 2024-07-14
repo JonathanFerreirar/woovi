@@ -6,8 +6,8 @@ import { cn } from '@/utils/cn'
 
 import { PaymentOption } from '../../../data'
 
-import SelectPayment from './fragments/selectPayment'
-import TitleSelect from './fragments/titlePayment'
+import { SelectPayment } from './fragments/selectPayment'
+import { TitlePayment } from './fragments/titlePayment'
 
 export type PaymentOptionProps = {
   id: number
@@ -31,7 +31,7 @@ const PaymentInstallment = ({
 
   return (
     <div className="relative size-auto">
-      <TitleSelect>{title}</TitleSelect>
+      <TitlePayment>{title}</TitlePayment>
 
       {paymentData.map((item, index) => {
         const isFirst = index === 0

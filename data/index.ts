@@ -13,12 +13,12 @@ export const PaymentOption = [
     id: 3,
     quantity: 4,
     value: 7725,
+    isBest: true,
   },
   {
     id: 4,
     quantity: 5,
     value: 6300,
-    isBest: true,
   },
   {
     id: 5,

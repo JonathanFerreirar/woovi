@@ -94,7 +94,6 @@
         "*.jsx"
       ],
       "rules": {
-        "import/prefer-default-export": "error",
         "@typescript-eslint/consistent-type-definitions": [
           "error",
           "type"

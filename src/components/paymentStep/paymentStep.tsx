@@ -1,33 +1,35 @@
 import React from 'react'
+import { Check } from 'lucide-react'
 
+import { Steps } from '@/app/payment/page'
 import { cn } from '@/utils/cn'
 import { formatValue } from '@/utils/formatMoney'
 
 import { PaymentOptionProps } from '../selectContainer'
 
 import HowWorkAccordion from './fragments/howWorkAccordion'
-import StepForm from './fragments/stepForm'
-import StepPix from './fragments/stepPix'
+import { StepForm } from './fragments/stepForm'
+import { StepPix } from './fragments/stepPix'
 
 type PaymentStepProps = {
-  step: '1' | '2'
+  step: Steps
   total: string
   option: PaymentOptionProps
 }
 
+const STEPS = [
+  {
+    id: 1,
+    label: '1º entrada no Pix',
+  },
+  {
+    id: 2,
+    label: `2º no Cartão`,
+  },
+]
+
 const PaymentStep = ({ option, total, step = '1' }: PaymentStepProps) => {
   const numberStep = Number(step)
-
-  const STEPS = [
-    {
-      id: 1,
-      label: '1º entrada no Pix',
-    },
-    {
-      id: 2,
-      label: `2º no Cartão`,
-    },
-  ]
 
   const renderStep = () => {
     switch (step) {
@@ -36,16 +38,13 @@ const PaymentStep = ({ option, total, step = '1' }: PaymentStepProps) => {
 
       case '2':
         return <StepForm option={option} />
-
-      default:
-        break
     }
   }
 
   return (
     <React.Fragment>
       {renderStep()}
-      <div className="">
+      <div>
         <p className="text-textLight">Prazo de pagamento</p>
         <span className="font-extrabold text-text">15/12/2021 - 08:17</span>
       </div>
@@ -59,15 +58,19 @@ const PaymentStep = ({ option, total, step = '1' }: PaymentStepProps) => {
               >
                 <div className="flex items-center gap-2">
                   <div
-                    aria-label="checked"
+                    aria-hidden
                     className={cn(
-                      'size-3 rounded-full border border-border  bg-white',
-                      numberStep === item.id && 'border-primary',
-                      numberStep === 2 &&
-                        item.id === 1 &&
-                        'border-primary bg-primary',
+                      'flex size-[14px]  border items-center justify-center rounded-full',
+                      numberStep === item.id && 'bg-white border-primary',
+                      numberStep !== item.id && 'bg-white border-border',
+                      numberStep === 2 && item.id === 1 && 'bg-primary',
                     )}
-                  />
+                  >
+                    {numberStep === 2 && item.id === 1 && (
+                      <Check size={12} strokeWidth={3} color="#fff" />
+                    )}
+                  </div>
+
                   <p className="text-[18px] font-semibold text-text">
                     {item.label}
                   </p>

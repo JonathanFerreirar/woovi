@@ -27,8 +27,7 @@ const HowWorkAccordion = () => {
       <AccordionDetails>
         <Typography>
           Copie o código acima e realize o pagamento no seu banco de
-          preferência, após isso será redirecionado para uma tela onde poderá
-          adicionar seu cartão de crédito e dar seguimento no fluxo.
+          preferência.
         </Typography>
       </AccordionDetails>
     </Accordion>

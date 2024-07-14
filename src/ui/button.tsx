@@ -4,6 +4,7 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
+import { LoaderCircle } from 'lucide-react'
 
 import { cn } from '@/utils/cn'
 
@@ -34,11 +35,13 @@ const SelectButtonContainer = styled(Button)({
 export type CustomizedButtonProps = React.PropsWithChildren &
   React.ComponentProps<typeof SelectButtonContainer> & {
     className?: string
+    isLoading?: boolean
   }
 
 const CustomizedButton = ({
   children,
   className,
+  isLoading = false,
   ...props
 }: CustomizedButtonProps) => {
   return (
@@ -48,7 +51,7 @@ const CustomizedButton = ({
         variant="contained"
         className={cn(className)}
       >
-        {children}
+        {isLoading ? <LoaderCircle className="animate-spin" /> : children}
       </SelectButtonContainer>
     </Stack>
   )

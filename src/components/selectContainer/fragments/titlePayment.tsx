@@ -9,7 +9,7 @@ type TitlePaymentProps = React.PropsWithChildren &
     titleCustomProps?: H3PropsWithoutChildren
   }
 
-const TitlePayment = ({
+export const TitlePayment = ({
   children,
   titleCustomProps,
   ...props
@@ -28,5 +28,3 @@ const TitlePayment = ({
     </div>
   )
 }
-
-export default TitlePayment

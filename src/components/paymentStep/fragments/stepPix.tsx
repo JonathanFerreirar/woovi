@@ -3,29 +3,38 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { LoaderCircle } from 'lucide-react'
 
 import qrcode from '@/../public/qrcode.png'
+import { paymentAction } from '@/action/payment'
 import { PaperIcon } from '@/components/icon'
 import { PaymentOptionProps } from '@/components/selectContainer'
 import CustomizedButton from '@/ui/button'
+import { ClickToCopy } from '@/utils/clickToCopy'
 
 export type StepProps = {
   total: string
   option: PaymentOptionProps
 }
 
-const StepPix = ({ option, total }: StepProps) => {
+export const StepPix = ({ option, total }: StepProps) => {
   const router = useRouter()
   const jsonOption = encodeURI(JSON.stringify(option))
   const [isLoading, setIsLoading] = React.useState(false)
+  const isInCash = option.quantity >= 1
 
-  const processPixPayment = () => {
+  const processPixPayment = async () => {
     setIsLoading(true)
-    setTimeout(() => {
-      router.replace(`/payment?step=2&option=${jsonOption}&total=${total}`, {
-        scroll: true,
-      })
+    await ClickToCopy({
+      contentToCopy: 'https://github.com/JonathanFerreirar',
+    })
+    setTimeout(async () => {
+      if (isInCash) {
+        await paymentAction()
+      } else {
+        router.replace(`/payment?step=2&option=${jsonOption}&total=${total}`, {
+          scroll: true,
+        })
+      }
       setIsLoading(false)
     }, 1500)
   }
@@ -39,23 +48,13 @@ const StepPix = ({ option, total }: StepProps) => {
       />
 
       <CustomizedButton
+        isLoading={isLoading}
         onClick={processPixPayment}
         className="flex min-w-[250px] items-center gap-2"
       >
-        {isLoading && <LoaderCircle className="animate-spin" />}
-        {!isLoading && (
-          <React.Fragment>
-            <span>Clique para copiar QR CODE</span>
-            <PaperIcon />
-          </React.Fragment>
-        )}
+        <span>Clique para copiar QR CODE</span>
+        <PaperIcon />
       </CustomizedButton>
     </React.Fragment>
   )
 }
-
-export default StepPix
-
-/*
-
- */
