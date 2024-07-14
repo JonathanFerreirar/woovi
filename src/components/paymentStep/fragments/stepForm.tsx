@@ -1,11 +1,12 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import MaskedInput from 'react-text-mask'
+import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
+import { paymentAction } from '@/action/payment'
 import { formCardSchema } from '@/types/forms'
 import CustomizedButton from '@/ui/button'
 import ErrorMessager from '@/ui/errorMessage'
@@ -15,7 +16,6 @@ import { CARD_EXP_MASK, CARDMASK, CPFMASK } from '@/utils/mask'
 
 import { useFormartOptions } from '../payment-hooks/useFormartOptions'
 
-import { paymentAction } from '@/action/payment'
 import { StepProps } from './stepPix'
 
 export type StepFormProps = Omit<StepProps, 'total'>
@@ -25,7 +25,7 @@ type FormCardType = z.infer<typeof formCardSchema>
 export const StepForm = ({ option }: StepFormProps) => {
   const { options } = useFormartOptions({ option })
   const [isLoading, setIsloading] = React.useState(false)
-  
+
   const defaultValue = options[0]?.value
 
   const {
@@ -40,10 +40,10 @@ export const StepForm = ({ option }: StepFormProps) => {
 
   const onSubmit: SubmitHandler<FormCardType> = () => {
     setIsloading(true)
-   
+
     setTimeout(async () => {
-     setIsloading(false)
-     await paymentAction()
+      setIsloading(false)
+      await paymentAction()
     }, 2000)
   }
 
@@ -169,9 +169,6 @@ export const StepForm = ({ option }: StepFormProps) => {
       <CustomizedButton className="w-full" type="submit" isLoading={isLoading}>
         Pagar
       </CustomizedButton>
-    
     </form>
   )
 }
-
- 

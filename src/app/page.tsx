@@ -6,8 +6,6 @@ import Wrapper from '@/components/wrapper/wrapper'
 
 import { PaymentOption } from '../../data'
 
-
-
 const Home = () => {
   return (
     <main>

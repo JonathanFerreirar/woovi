@@ -18,7 +18,7 @@ type SelectPaymentProps = React.PropsWithChildren &
     option: PaymentOptionProps
   }
 
-export  const SelectPayment = ({
+export const SelectPayment = ({
   option,
   total,
   isSelected,
@@ -82,5 +82,3 @@ export  const SelectPayment = ({
     </Link>
   )
 }
-
-

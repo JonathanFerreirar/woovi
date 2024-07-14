@@ -9,7 +9,8 @@ import { nunito } from './font'
 
 export const metadata: Metadata = {
   title: 'Woovi',
-  description: 'Venda mais e encante seus clientes, Aceite Pix, Dê Cashback, Aplique descontos de forma inteligente',
+  description:
+    'Venda mais e encante seus clientes, Aceite Pix, Dê Cashback, Aplique descontos de forma inteligente',
 }
 
 const RootLayout = ({

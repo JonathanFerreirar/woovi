@@ -4,10 +4,10 @@ import React from 'react'
 
 import { cn } from '@/utils/cn'
 
-import {SelectPayment} from './selectPayment'
-import {TitlePayment} from './titlePayment'
+import { SelectPayment } from './selectPayment'
+import { TitlePayment } from './titlePayment'
 
-export  const PixInCash = () => {
+export const PixInCash = () => {
   const [isSelected, setIsSelected] = React.useState(false)
 
   return (
@@ -41,5 +41,3 @@ export  const PixInCash = () => {
     </div>
   )
 }
-
-
