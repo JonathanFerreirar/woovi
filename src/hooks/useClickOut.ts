@@ -11,10 +11,8 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
       }
     }
 
-    // Adiciona evento de clique fora ao montar o componente
     document.addEventListener('click', handleClickOutside)
 
-    // Remove o evento de clique fora ao desmontar o componente
     return () => {
       document.removeEventListener('click', handleClickOutside)
     }
