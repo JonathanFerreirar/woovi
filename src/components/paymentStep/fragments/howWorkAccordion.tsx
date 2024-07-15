@@ -5,7 +5,7 @@ import { ChevronUp } from 'lucide-react'
 
 import Accordion from '@/ui/accordion'
 
-const HowWorkAccordion = () => {
+const HowWorkAccordion = ({ step }: { step: string }) => {
   return (
     <Accordion>
       <AccordionSummary
@@ -26,8 +26,10 @@ const HowWorkAccordion = () => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          Copie o código acima e realize o pagamento no seu banco de
-          preferência.
+          {step === '1' &&
+            'Copie o código acima e realize o pagamento no seu banco de preferência.'}
+          {step === '2' &&
+            'Adicione os dados do seu cartão de crédito para finalizar o pagamento'}
         </Typography>
       </AccordionDetails>
     </Accordion>

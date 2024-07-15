@@ -90,7 +90,7 @@ const PaymentStep = ({ option, total, step = '1' }: PaymentStepProps) => {
           </span>
         </div>
         <div className="mb-5 border-y-2 border-border py-3">
-          <HowWorkAccordion />
+          <HowWorkAccordion step={step} />
         </div>
       </div>
     </React.Fragment>

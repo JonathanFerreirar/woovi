@@ -20,7 +20,7 @@ export const StepPix = ({ option, total }: StepProps) => {
   const router = useRouter()
   const jsonOption = encodeURI(JSON.stringify(option))
   const [isLoading, setIsLoading] = React.useState(false)
-  const isInCash = option.quantity >= 1
+  const isInCash = option.quantity > 1
 
   const processPixPayment = async () => {
     setIsLoading(true)
@@ -29,14 +29,14 @@ export const StepPix = ({ option, total }: StepProps) => {
     })
     setTimeout(async () => {
       if (isInCash) {
-        await paymentAction()
-      } else {
         router.replace(`/payment?step=2&option=${jsonOption}&total=${total}`, {
           scroll: true,
         })
+      } else {
+        await paymentAction()
       }
       setIsLoading(false)
-    }, 1500)
+    }, 2500)
   }
 
   return (
