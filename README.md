@@ -22,6 +22,7 @@ As seguintes dependências foram utilizadas no projeto:
 - zod
 - react
 - nextjs
+- nookies
 - react-dom
 - MUI Material
 - react-text-mask
